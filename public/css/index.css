@@ -1,0 +1,76 @@
+:root {
+    --theme-color: #062d1f;
+    --main-dark: #0a090b;
+    --light-green: #00A871;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.disable { 
+    opacity: .1 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+.text-theme-color {
+    color: var(--theme-color);
+}
+
+.bg-theme-color {
+    background-color: var(--theme-color);
+}
+
+.text-light-green {
+    color: var(--light-green);
+}
+
+.bg-light-green {
+    background-color: var(--light-green);
+}
+
+.home-banner {
+    padding: 16rem 0 12rem;
+    background-image: url('/images/scene.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.btn-lg {
+    border-top-left-radius: 24px !important;
+    border-bottom-right-radius: 24px !important;
+}
+
+.home-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(6, 45, 31, 0.8);
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.frontend-navbar-wrapper:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 110px;
+    width: 100%;
+    z-index: -2;
+    background-color: var(--theme-color);
+}
