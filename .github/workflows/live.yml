@@ -17,4 +17,4 @@ jobs:
         server: pmsg.ng
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: pmsg.ng/
+        server-dir: public_html/
