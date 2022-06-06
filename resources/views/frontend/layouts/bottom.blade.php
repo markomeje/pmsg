@@ -1,21 +1,20 @@
 <section class="bg-theme-color" style="padding: 10rem 0;">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-lg-4">
+			<div class="col-12 col-lg-4 mb-4">
 				<div class="mb-4">
 					<a href="">PMSG Logo</a>
 				</div>
 				<div class="text-white mb-4">Our mission is to Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</div>
-				<a class="btn btn-lg bg-light-green px-5 py-3 mb-4 text-white">Support Now</a>
+				<a href="{{ route('support') }}" class="btn btn-lg bg-light-green px-5 py-3 text-white">Support Now</a>
 			</div>
-			<div class="col-12 col-md-6 col-lg-4">
+			<div class="col-12 col-md-6 col-lg-4 mb-4">
 				<h3 class="text-light-green mb-4">Quick Links</h3>
-				<a href="{{ url('/') }}" class="d-block pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Home</a>
-				<a href="{{ url('/news') }}" class="d-block pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">News</a>
-				<a href="{{ url('/home') }}" class="d-block pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Articles</a>
+				<a href="{{ route('home') }}" class="d-block pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Home</a>
+				<a href="{{ route('news') }}" class="d-block pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">News</a>
 			</div>
-			<div class="col-12 col-md-6 col-lg-4">
+			<div class="col-12 col-md-6 col-lg-4 mb-4">
 				<h3 class="text-light-green mb-4">Social Connect</h3>
 				<div class="">
 					<div class="text-white mb-4">To stay informed, connect with us via our social handles</div>
