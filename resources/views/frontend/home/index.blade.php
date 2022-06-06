@@ -15,7 +15,7 @@
                         </div>
                         <h1 class="text-light-green mb-4 font-weight-bolder">Support Dr. Peter Mbah For <span class="text-white">Governor</span> Enugu State.</h1>
                         <div class="text-white mb-4">The fortune of a society changes when its best heads are put forward in leadership. Tommorrow is here. Togetther we can. Let's give all our support for good.</div>
-                        <a class="btn btn-lg bg-light-green px-5 py-3 text-white">Support Now</a>
+                        <a href="{{ route('support') }}" class="btn btn-lg bg-light-green px-5 py-3 text-white">Support Now</a>
                     </div>
                     <div class="col-12 col-lg-6 mb-4">
                         <div class="">
@@ -39,7 +39,7 @@
                             <div class="text-theme-color mb-4">. . . Peter Mbah is open and willing to extend a hand of fellowship to everyone, I mean everyone including those that think themselves enemies. Let us rise, Let us drop our stones Let us come together Let us build a bigger, and better Enugu Let us support Barr. Peter Mbah.</div>
                             <a class="btn btn-lg bg-light-green px-5 py-3 text-white mb-4">Read More</a>
                             <div class="text-muted">
-                                <div><em>By</em> Dr. Chukwuemeka Aroh (MNIPR)</div>
+                                <div><em>By</em> <a href="https://draroh.org" class="text-underline" target="_blank">Dr. Chukwuemeka Aroh</a> (MNIPR)</div>
                                 <div class="">Politician,Political and Public Relations Analyst </div>
                             </div>
                         </div>
@@ -47,6 +47,6 @@
                 </div>
             </div>
         </section>
-        @include('frontend.layouts.navbar')
+        @include('frontend.layouts.bottom')
     </div>
 @include('layouts.footer')

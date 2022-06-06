@@ -13,11 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
 
-// Route::prefix('supporter')->group(function () {
-//     Route::post('/send', [\App\Http\Controllers\SupporterController::class, 'send'])->name('support.add');
-//     Route::get('/thanks', [\App\Http\Controllers\SupporterController::class, 'thanks'])->name('contact.thanks');
-// });
+Route::domain(env('APP_URL'))->group(function() {
+    Route::get('/', function () {
+        return view('frontend.home.index');
+    })->name('home');
+
+    Route::get('/support', function () {
+        return view('frontend.support.index');
+    })->name('support');
+
+    Route::prefix('supporter')->group(function () {
+        Route::post('/add', [\App\Http\Controllers\SupporterController::class, 'add'])->name('supporter.add');
+    });
+
+    Route::prefix('news')->group(function () {
+        Route::post('/', [\App\Http\Controllers\NewsController::class, 'send'])->name('news');
+    });
+});
