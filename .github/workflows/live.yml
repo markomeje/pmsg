@@ -13,9 +13,6 @@ jobs:
 
     - name: Install Composer dependencies
       run: composer install --prefer-dist --no-interaction
-
-    - name: Run laravel migrations
-      run: php artisan migrate
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
