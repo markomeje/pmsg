@@ -1,7 +1,7 @@
 @include('layouts.header')
     <div class="">
         @include('frontend.layouts.navbar')
-        <section class="support-banner position-relative">
+        <section class="position-relative" style="padding: 16rem 0 10rem">
             <div class="container">
                 <div class="row">
                     <div class="col-12 mb-4">

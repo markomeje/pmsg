@@ -10,7 +10,7 @@
                     <a href="" class="text-white">Login</a>
                 </div>
             </div>
-            <div class="bg-white d-flex justify-content-between align-items-center w-100" style="height: 80px; line-height: 80px;">
+            <div class="bg-white shadow-sm d-flex justify-content-between align-items-center w-100" style="height: 80px; line-height: 80px;">
                 <div class="d-flex w-50 px-4">
                     <a href="{{ route('home') }}" class="text-theme-color mr-3">Home</a>
                     <a href="{{ route('news') }}" class="text-theme-color mr-3">News</a>
