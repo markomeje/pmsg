@@ -1,9 +1,9 @@
 @include('layouts.header')
     <div class="">
         @include('frontend.layouts.navbar')
-        <section class="position-relative" style="padding: 16rem 0 10rem">
+        <section class="position-relative" style="padding: 14rem 0 10rem">
             <div class="container">
-                <div class="row">
+                <div class="row"> 
                     <div class="col-12 mb-4">
                         <h3 class="text-light-green mb-4">To support, Please fill in your details below.</h3>
                         <div class="text-white mb-4"></div>
@@ -16,7 +16,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label class="text-muted">Title</label>
-                                            <select class="form-control title" name="title">
+                                            <select class="form-control custom-select title" name="title">
                                                 <option value="">Select title</option>
                                                 <?php $titles = \App\Models\Supporter::$titles; ?>
                                                 @if(empty($titles))
@@ -29,7 +29,7 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            <small class="error email-error text-danger"></small>
+                                            <small class="error title-error text-danger"></small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="text-muted">Firstname</label>
@@ -44,9 +44,9 @@
                                             <small class="error lastname-error text-danger"></small>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="text-muted">LGA</label>
-                                            <select class="form-control lga" name="lga">
-                                                <option value="">Select lga</option>
+                                            <label class="text-muted">Local government area</label>
+                                            <select class="form-control custom-select lga" name="lga">
+                                                <option value="">Select local government</option>
                                                 <?php $lgas = \App\Models\Supporter::$lgas; ?>
                                                 @if(empty($lgas))
                                                     <option value="">No lgas</option>
@@ -58,7 +58,7 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            <small class="error email-error text-danger"></small>
+                                            <small class="error lga-error text-danger"></small>
                                         </div>
                                         
                                     </div>

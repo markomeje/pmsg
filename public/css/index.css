@@ -1,6 +1,5 @@
 :root {
     --theme-color: #062d1f;
-    --main-dark: #0a090b;
     --light-green: #00A871;
 }
 
@@ -42,11 +41,6 @@ body {
     border-bottom-left-radius: 100px;
 }
 
-.btn-lg {
-    border-top-left-radius: 24px !important;
-    border-bottom-right-radius: 24px !important;
-}
-
 .home-banner:before {
     content: '';
     position: absolute;
@@ -62,34 +56,109 @@ body {
     border-bottom-left-radius: 100px;
 }
 
-.frontend-navbar-wrapper:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 110px;
-    width: 100%;
-    z-index: -2;
-    background-color: var(--theme-color);
+.btn-lg {
+    border-top-left-radius: 24px !important;
+    border-bottom-right-radius: 24px !important;
+}
+
+.btn-md {
+    border-top-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important;
+}
+
+*:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+}
+
+.navbar-center {}
+
+ul {
+    list-style: none;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .text-underline {
     text-decoration: underline;
 }
 
-.support-banner {
-    padding: 18rem 0 6rem;
-    background-image: url('/images/scene.jpg');
+.logo-wrapper {
+    width: 210px !important;
+}
+
+.hanburger-icon {
+    -webkit-transition: 0.8s;
+    -o-transition: 0.8s;
+    transition: 0.8s;
+    display: none !important;
+}
+
+.hanburger-icon .icon-lines {
+    width: 38px;
+    height: 2px;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    background-color: var(--theme-color);
+}
+
+.hanburger-icon.slide .icon-lines {
+    background: transparent;
+}
+
+.hanburger-icon.slide .icon-lines::before {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+.hanburger-icon.slide .icon-lines::after {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+.hanburger-icon .icon-lines::before,
+.hanburger-icon .icon-lines::after {
+    content: '';
+    position: absolute;
+    width: 38px;
+    height: 2px;
+    background-color: var(--theme-color);
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    left: 0;
+    right: 0;
+}
+
+.hanburger-icon .icon-lines::before {
+    -webkit-transform: translateY(-8px);
+        -ms-transform: translateY(-8px);
+            transform: translateY(-8px);
+}
+
+.hanburger-icon .icon-lines::after {
+    -webkit-transform: translateY(8px);
+        -ms-transform: translateY(8px);
+            transform: translateY(8px);
+}
+
+.news-banner {
+    padding: 12rem 0 0;
+    background-image: url('/images/news.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    height: 340px;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.support-banner:before {
+.news-banner:before {
     content: '';
     position: absolute;
     top: 0;
@@ -100,4 +169,46 @@ body {
     width: 100%;
     z-index: -2;
     background-color: rgba(6, 45, 31, 0.8);
+}
+
+.navbar-menu .menu-content {
+    z-index: 6;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    padding-top: 77px;
+}
+
+.navbar-toggle {
+    right: 0;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+}
+
+.navbar-menu .menu-content::-webkit-scrollbar { 
+    display: none !important;  /* Safari and Chrome */
+}
+
+@media (max-width:  767.98px) {
+
+    .navbar-links, .navbar-auth {
+        display: none !important;
+    }
+
+    .hanburger-icon {
+        display: flex !important;
+    }
+
+}
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .navbar-menu {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    
 }

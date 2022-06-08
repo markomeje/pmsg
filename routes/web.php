@@ -23,11 +23,16 @@ Route::domain(env('APP_URL'))->group(function() {
         return view('frontend.support.index');
     })->name('support');
 
+    Route::get('/login', function () {
+        return view('frontend.auth.login');
+    })->name('login');
+
     Route::prefix('supporter')->group(function () {
         Route::post('/add', [\App\Http\Controllers\SupporterController::class, 'add'])->name('supporter.add');
     });
 
     Route::prefix('news')->group(function () {
-        Route::post('/', [\App\Http\Controllers\NewsController::class, 'send'])->name('news');
+        Route::get('/', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
+        Route::post('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'send'])->name('news.read');
     });
 });

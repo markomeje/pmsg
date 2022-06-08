@@ -20,7 +20,7 @@ class SupporterController extends Controller
             'email' => ['required', 'email', 'unique:users'], 
             'phone' => ['required', 'unique:users'], 
             'lga' => ['required', 'string'],
-        ]);
+        ], ['lga.required' => 'Select your local government.']);
 
         if ($validator->fails()) {
             return response()->json([
