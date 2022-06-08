@@ -5,8 +5,7 @@
 				<a href="{{ route('home') }}" class="logo-wrapper d-block mb-4">
                     <img src="/images/logo.png" class="img-fluid" alt="{{ config('app.name') }}">
                 </a>
-				<div class="text-white mb-4">Our mission is to Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</div>
+				{{-- <div class="text-white mb-4"></div> --}}
 				<a href="{{ route('support') }}" class="btn btn-lg bg-light-green px-5 py-3 text-white">Support Now</a>
 			</div>
 			<div class="col-12 col-md-6 col-lg-4 mb-4">
