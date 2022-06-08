@@ -27,6 +27,10 @@ Route::domain(env('APP_URL'))->group(function() {
         return view('frontend.auth.login');
     })->name('login');
 
+    Route::get('/profile', function () {
+        return view('frontend.home.profile');
+    })->name('profile');
+
     Route::prefix('supporter')->group(function () {
         Route::post('/add', [\App\Http\Controllers\SupporterController::class, 'add'])->name('supporter.add');
     });
@@ -35,4 +39,10 @@ Route::domain(env('APP_URL'))->group(function() {
         Route::get('/', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
         Route::post('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'send'])->name('news.read');
     });
+});
+
+Route::domain(env('ADMIN_URL'))->group(function() {
+    Route::get('/', function () {
+        return view('admin.dashboard.index');
+    })->name('dashboard');
 });

@@ -17,31 +17,27 @@
                         <div class="text-white mb-4">The fortune of a society changes when its best heads are put forward in leadership. Tommorrow is here. Togetther we can. Let's give all our support for good.</div>
                         <a href="{{ route('support') }}" class="btn btn-lg bg-light-green px-5 py-3 text-white">Support Now</a>
                     </div>
-                    <div class="col-12 col-lg-6 mb-4">
-                        <div class="">
-                            {{-- <img src="/images/pmg.jpg" class="img-fluid w-100"> --}}
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <section class="" style="padding: 10rem 0;">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-4">
-                        <div class="">
-                            <img src="/images/pvc.jpeg" class="img-fluid w-100 h-100">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6 mb-4">
+                        <div class="p-4 position-relative" style="border: 1px solid var(--light-green)">
+                            <div class="position-absolute" style="bottom: 0; left: 0;">
+                                <div class="bg-light-green text-white p-4">
+                                    Barr. Peter Mbah
+                                </div>
+                            </div>
+                            <img src="/images/pnm.png" class="img-fluid w-100 h-100" style="border: 1px solid var(--light-green)">
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 mb-4">
+                    <div class="col-12 col-lg-6 mb-4">
                         <div>
-                            <h1 class="text-light-green mb-4">Peter Mbah and The Stones.</h1>
-                            <div class="text-theme-color mb-4">. . . Peter Mbah is open and willing to extend a hand of fellowship to everyone, I mean everyone including those that think themselves enemies. Let us rise, Let us drop our stones Let us come together Let us build a bigger, and better Enugu Let us support Barr. Peter Mbah.</div>
-                            <a class="btn btn-lg bg-light-green px-5 py-3 text-white mb-4">Read More</a>
-                            <div class="text-muted">
-                                <div><em>By</em> <a href="https://draroh.org" class="text-underline" target="_blank">Dr. Chukwuemeka Aroh</a> (MNIPR)</div>
-                                <div class="">Politician,Political and Public Relations Analyst </div>
-                            </div>
+                            <h1 class="text-light-green mb-4">Who is Peter Mbah?</h1>
+                            <div class="text-theme-color mb-4">Peter Mbah hails from owo in Nkanu East Local Government of Enugu state. He is a very successful businessman who has built so many successful companies. He obtained his law degree from East London and also an accomplished financial analyst. As a lawyer he will take more than a cursory look at everything he does and compliment it with financial prudence.</div>
+                            <a href="{{ route('profile') }}" class="btn btn-lg bg-light-green px-5 py-3 text-white mb-4">Read More</a>
                         </div>
                     </div>
                 </div>

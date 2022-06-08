@@ -1,4 +1,4 @@
-<div class="fixed-top bg-white border-bottom">
+<div class="fixed-top bg-white shadow-sm">
     <div class="">
         <div class="container">
             <div class="navbar-items py-2 px-0 d-flex align-items-center justify-content-between">
@@ -12,6 +12,12 @@
                         </li>
                         <li class="ml-3">
                             <a href="{{ '' }}" class="text-decoration-none text-theme-color">News</a>
+                        </li>
+                        <li class="ml-3">
+                            <a href="{{ '' }}" class="text-decoration-none text-theme-color">Blog</a>
+                        </li>
+                        <li class="ml-3">
+                            <a href="{{ route('support') }}" class="text-decoration-none text-theme-color">Support</a>
                         </li>
                     </ul>
                     <div class="navbar-auth">
@@ -50,7 +56,7 @@
                             </div>
                         @else
                             <div class="d-flex desktop-signlog align-items-center">
-                                <a href="{{ route('login') }}" class="btn btn-md bg-light-green px-4 ml-3 text-white">Login</a>
+                                <a href="{{ route('login') }}" class="btn btn-md bg-light-green px-4 ml-4 text-white">Login</a>
                             </div>
                         @endif
                     </div>

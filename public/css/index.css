@@ -56,6 +56,29 @@ body {
     border-bottom-left-radius: 100px;
 }
 
+.profile-banner {
+    padding: 12rem 0 8rem;
+    background-image: url('/images/scene.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.profile-banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    background-color: rgba(6, 45, 31, 0.8);
+}
+
 .btn-lg {
     border-top-left-radius: 24px !important;
     border-bottom-right-radius: 24px !important;
