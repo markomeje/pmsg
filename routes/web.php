@@ -41,8 +41,8 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::middleware(['web', 'auth'])->domain(env('ADMIN_URL'))->group(function() {
-    Route::get('/', function () {
-        return view('admin.dashboard.index');
-    })->name('dashboard');
-});
+// Route::middleware(['web', 'auth'])->domain(env('ADMIN_URL'))->group(function() {
+//     Route::get('/', function () {
+//         return view('admin.dashboard.index');
+//     })->name('dashboard');
+// });
