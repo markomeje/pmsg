@@ -171,12 +171,23 @@ ul {
     background-color: rgba(6, 45, 31, 0.8);
 }
 
+.navbar-menu {
+    width: 20vw;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    right: -100%;
+}
+
 .navbar-menu .menu-content {
     z-index: 6;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 77px;
+    padding-top: 110px !important;
 }
 
 .navbar-toggle {

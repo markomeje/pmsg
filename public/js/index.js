@@ -7,37 +7,6 @@
         $('.hanburger-icon').toggleClass('slide');
     });
 
-    var backendSidebar = $('.backend-sidebar');
-    if (backendSidebar) {
-        var backendNavigationMenuCloseIcon = $('.backend-navigation-menu-close-icon');
-        var backendNavigationMenuIcon = $('.backend-navigation-menu-icon');
-        if (backendNavigationMenuIcon) {
-            backendNavigationMenuIcon.on('click', function() {
-                backendSidebar.removeClass('d-none').addClass('backend-sidebar-toggle');
-            });
-        }
-
-        if (backendNavigationMenuCloseIcon) {
-            backendNavigationMenuCloseIcon.on('click', function() {
-                backendSidebar.removeClass('backend-sidebar-toggle').addClass('d-none');
-            });
-        }
-    }
-
-    var logoutLink = document.querySelector('.logout-link');
-    if(logoutLink) {
-        const timeout = (900000/3);// 900000 ms = 15minutes : Logout @ 5minutes of inactivity
-        var idleTimer = null;
-        $('*').bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(function () {
-                logoutLink.click();
-            }, timeout);
-        });
-
-        $('body').trigger('mousemove');
-    }
-
     $('.dropdown-menu').click(function (event) {
         event.stopPropagation();
     });

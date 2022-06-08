@@ -62,16 +62,14 @@
         </div>
     </div>
 </div>
-{{-- <div class="navbar-menu no-gutters bg-white position-fixed vh-100">
+<div class="navbar-menu no-gutters bg-white position-fixed vh-100">
     <div class="menu-content vh-100 pb-4">
         <div class="px-3 py-4">
-            <a href="{{ route('home') }}" class="d-block bg-main-ash text-decoration-none text-theme-color px-3 py-3 icon-raduis mb-3">Home</a>
-            <a href="{{ route('news') }}" class="d-block bg-main-ash text-decoration-none text-theme-color px-3 py-3 icon-raduis mb-3">News</a>
+            <a href="{{ route('home') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Home</a>
+            <a href="{{ route('news') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">News</a>
             @if(!auth()->check())
-                <a href="{{ route('login') }}" class="d-block bg-theme-color text-decoration-none px-3 py-3 icon-raduis mb-3">
-                    <small class="text-white">Login</small>
-                </a>
+                <a href="{{ route('login') }}" class="d-block text-white text-decoration-none px-3 py-3 border bg-theme-color mb-3">Login</a>
             @endif 
         </div> 
     </div>
-</div> --}}
+</div>
