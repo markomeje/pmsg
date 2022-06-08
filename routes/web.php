@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::domain(env('APP_URL'))->group(function() {
+Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/', function () {
         return view('frontend.home.index');
     })->name('home');
@@ -41,7 +41,7 @@ Route::domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::domain(env('ADMIN_URL'))->group(function() {
+Route::middleware(['web', 'auth'])->domain(env('ADMIN_URL'))->group(function() {
     Route::get('/', function () {
         return view('admin.dashboard.index');
     })->name('dashboard');

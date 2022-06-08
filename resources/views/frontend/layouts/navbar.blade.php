@@ -11,7 +11,7 @@
                             <a href="{{ route('home') }}" class="text-decoration-none text-theme-color">Home</a>
                         </li>
                         <li class="ml-3">
-                            <a href="{{ '' }}" class="text-decoration-none text-theme-color">News</a>
+                            <a href="{{ route('news') }}" class="text-decoration-none text-theme-color">News</a>
                         </li>
                         <li class="ml-3">
                             <a href="{{ '' }}" class="text-decoration-none text-theme-color">Blog</a>
