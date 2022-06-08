@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Supporter;
+use App\Rules\EmailRule;
 use Exception;
 use Validator;
 
@@ -15,10 +16,10 @@ class SupporterController extends Controller
         $data = request()->all();
         $validator = Validator::make($data, [ 
             'title' => ['nullable', 'string',], 
-            'firstname' => ['required', 'string', 'max:50'], 
-            'lastname' => ['required', 'string', 'max:50'], 
-            'email' => ['required', 'email', 'unique:users'], 
-            'phone' => ['required', 'unique:users'], 
+            'firstname' => ['required', 'string', 'min:3', 'max:50'], 
+            'lastname' => ['required', 'string', 'min:3', 'max:50'], 
+            'email' => ['required', 'email', (new EmailRule), 'unique:supporters'], 
+            'phone' => ['required', 'unique:supporters'], 
             'lga' => ['required', 'string'],
         ], ['lga.required' => 'Select your local government.']);
 
@@ -29,7 +30,7 @@ class SupporterController extends Controller
             ]);
         }
 
-        // try {
+        try {
             $supporter = Supporter::create($data);
             if ($supporter) {
                 return response()->json([
@@ -41,11 +42,11 @@ class SupporterController extends Controller
 
             throw new Exception('Error Processing Request');
 
-        // } catch (Exception $error) {
-        //     return response()->json([
-        //         'status' => 0,
-        //         'info' => 'Unknown error. Try again later',
-        //     ]);
-        // }
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown error. Try again later',
+            ]);
+        }
     }
 }

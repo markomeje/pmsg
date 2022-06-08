@@ -14,7 +14,7 @@ class Supporter extends Model
      * 
      * @type array
      */
-    public static $titles = ['Bar.', 'mr.', 'Engr.', 'mrs.', 'dr.', 'prof.', 'comrd.'];
+    public static $titles = ['Barr.', 'mr.', 'Engr.', 'mrs.', 'dr.', 'prof.', 'comrd.'];
 
     /**
      * The attributes that are mass assignable.
