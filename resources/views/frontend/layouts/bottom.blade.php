@@ -20,17 +20,14 @@
 				<div class="">
 					<div class="text-white mb-4">To stay informed, connect with us via our social handles</div>
 					<div class="d-flex align-items-center justify-content-around p-4 bg-light-green">
-						<a href="" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;">
+						<a href="https://www.facebook.com/petermbahsupport/" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
 							<i class="icofont-facebook"></i>
 						</a>
-						<a href="" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;">
+						<a href="https://www.instagram.com/p/CegXdyqMvjU/?igshid=YmMyMTA2M2Y=" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
 							<i class="icofont-instagram"></i>
 						</a>
-						<a href="" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;">
+						<a href="https://twitter.com/PMSG2023/status/1532366562686128135?s=20&t=tDSFDuXB7EO2oXbpYJRy9g" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
 							<i class="icofont-twitter"></i>
-						</a>
-						<a href="" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;">
-							<i class="icofont-whatsapp"></i>
 						</a>
 					</div>
 				</div>
