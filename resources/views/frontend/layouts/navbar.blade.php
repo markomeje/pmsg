@@ -1,4 +1,4 @@
-<div class="fixed-top bg-white shadow-sm">
+<div class="fixed-top bg-white">
     <div class="">
         <div class="container">
             <div class="navbar-items py-2 px-0 d-flex align-items-center justify-content-between">
@@ -23,23 +23,19 @@
                     <div class="navbar-auth">
                         @if(auth()->check())
                             <div class="dropdown cursor-pointer ml-3">
-                                <div class="text-center rounded-circle" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 24" style="width: 28px; height: 28px; line-height: 28px;">
-                                    @if(empty(auth()->user()->profile->image))
-                                        <div class="text-white tiny-font rounded-circle bg-theme-color w-100 h-100">
+                                <div class="text-center rounded-circle" id="admin-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 4" style="width: 28px; height: 28px; line-height: 28px;">
+                                    <div class="rounded-circle bg-theme-color w-100 h-100">
+                                        <small class="text-white">
                                             @if(empty(auth()->user()->name))
                                                 <i class="icofont-ui-user"></i>
                                             @else
                                                 {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
                                             @endif
-                                        </div>
-                                    @else
-                                        <div class="position-relative border w-100 h-100 d-block rounded-circle">
-                                            <img src="{{ auth()->user()->profile->image->link }}" class="img-fluid w-100 h-100 object-cover rounded-circle">
-                                        </div>
-                                    @endif
+                                        </small> 
+                                    </div>
                                 </div>
-                                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="website-user-icon">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="admin-user">
+                                    <a class="dropdown-item" href="{{ route('admin') }}">
                                         <small class="text-theme-color mr-1">
                                           <i class="icofont-login"></i>
                                         </small>

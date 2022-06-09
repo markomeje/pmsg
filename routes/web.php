@@ -23,10 +23,6 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         return view('frontend.support.index');
     })->name('support');
 
-    Route::get('/login', function () {
-        return view('frontend.auth.login');
-    })->name('login');
-
     Route::get('/profile', function () {
         return view('frontend.home.profile');
     })->name('profile');
@@ -39,10 +35,16 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
         Route::get('/', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
         Route::post('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'send'])->name('news.read');
     });
+
+    Route::prefix('login')->group(function () {
+        Route::get('/', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
+        Route::post('/auth', [\App\Http\Controllers\LoginController::class, 'auth'])->name('auth.login');
+        Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+    });
 });
 
-// Route::middleware(['web', 'auth'])->domain(env('ADMIN_URL'))->group(function() {
-//     Route::get('/', function () {
-//         return view('admin.dashboard.index');
-//     })->name('dashboard');
-// });
+Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
+    Route::get('/', function () {
+        return view('admin.dashboard.index');
+    })->name('admin');
+});
