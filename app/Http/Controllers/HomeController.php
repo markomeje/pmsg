@@ -9,4 +9,20 @@ class HomeController extends Controller
     {
         return view('frontend.home.index')->with([]);
     }
+
+    /**
+     * The Pricipal profile
+     */
+    public function profile()
+    {
+        return view('frontend.home.profile')->with([]);
+    }
+
+    /**
+     * The support view
+     */
+    public function support()
+    {
+        return view('frontend.home.support')->with([]);
+    }
 }

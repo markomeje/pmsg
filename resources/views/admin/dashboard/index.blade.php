@@ -17,22 +17,24 @@
                             <div class="alert alert-danger w-100">Dashboard links not found.</div>
                         @else
                             @foreach($links as $link => $value)
-                                <div class="col-6 col-md-4 col-lg-4 mb-4">
-                                    <div class="card bg-white border-0 shadow-sm" style="border-raduis: 20px !important;">
-                                        <div class="card-body">
-                                            <div class="bg-theme-color mb-3 rounded-circle text-center" style="width: 30px; height: 30px; line-height: 30px;">
+                                <div class="col-12 col-md-4 col-lg-4 mb-4">
+                                    <div class="card bg-white shadow-sm border-theme-color" style="border-raduis: 50px !important;">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <div class="">
+                                                <h3 class="m-0 text-theme-color">
+                                                    {{ $value['count'] ?? 0 }}
+                                                </h3>
+                                                <a href="{{ '' }}" class="font-weight-bold mb-3">
+                                                    <small class="text-theme-color">
+                                                        {{ $value['text'] }}
+                                                    </small>
+                                                </a>
+                                            </div>
+                                            <div class="bg-theme-color mb-3 rounded-circle text-center" style="width: 55px; height: 55px; line-height: 55px;">
                                                 <small class="text-white">
                                                     <i class="icofont-{{ $value['icon'] }}"></i>
                                                 </small>
                                             </div>
-                                            <a href="{{ '' }}" class="font-weight-bold mb-3">
-                                                <small class="text-theme-color">
-                                                    {{ $value['text'] }}
-                                                </small>
-                                            </a>
-                                            <h3 class="m-0">
-                                                {{ $value['count'] ?? 0 }}
-                                            </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -47,32 +49,38 @@
                         @if($supporters->count() <= 0)
                             <div class="alert alert-danger">No recent supporters</div>
                         @else
+                        <div class="row">
                             @foreach($supporters as $supporter)
-                                <div class="p-3 bg-white mb-4 icon-raduis shadow-sm d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <div class="mr-2">
-                                            <div class="text-center text-main-dark border rounded-circle" style="height: 35px; width: 35px; line-height: 35px; background-color: {{ randomrgba() }};">
-                                                {{ substr($supporter->name, 0, 1) }}
+                                <div class="col-12 col-md-4 col-lg-12">
+                                    <div class="p-3 bg-white mb-4 shadow-sm border-theme-color d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-2">
+                                                <div class="text-center text-main-dark border rounded-circle" style="height: 35px; width: 35px; line-height: 35px; background-color: {{ randomrgba() }};">
+                                                    {{ substr($supporter->firstname, 0, 1) }}
+                                                </div>
+                                            </div> 
+                                            <div class="">
+                                                <a href="{{ '' }}">
+                                                    <small class="text-main-dark d-block">
+                                                        {{ \Str::limit($supporter->firstname, 12) }}
+                                                    </small>
+                                                </a> 
+                                                <small class="text-muted tiny-font">
+                                                    {{ ucwords($supporter->created_at->diffForHumans()) }}
+                                                </small>
                                             </div>
                                         </div> 
-                                        <div class="">
-                                            <a href="{{ '' }}">
-                                                <small class="text-main-dark d-block">
-                                                    {{ \Str::limit($supporter->name, 12) }}
-                                                </small>
-                                            </a> 
-                                            <small class="text-muted tiny-font">
-                                                {{ ucwords($supporter->created_at->diffForHumans()) }}
+                                        <div class="rounded-circle bg-success text-center" style="height: 20px; width: 20px; line-height: 20px;">
+                                            <small class="text-white">
+                                                <i class="icofont-tick-mark"></i>
                                             </small>
                                         </div>
-                                    </div> 
-                                    <div class="rounded-circle bg-{{ strtolower($supporter->status) === 'active' ? 'success' : 'danger' }} text-center" style="height: 20px; width: 20px; line-height: 15px;">
-                                        <small class="text-white tiny-font">
-                                            <i class="icofont-tick-mark"></i>
-                                        </small>
                                     </div>
                                 </div>
+                                
                             @endforeach
+                        </div>
+                            
                         @endif
                     </div>
                 </div>

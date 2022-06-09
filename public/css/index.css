@@ -56,6 +56,10 @@ body {
     border-bottom-left-radius: 100px;
 }
 
+.tiny-font {
+    font-size: 8px;
+}
+
 .profile-banner {
     padding: 12rem 0 8rem;
     background-image: url('/images/scene.jpg');
@@ -77,6 +81,10 @@ body {
     width: 100%;
     z-index: -2;
     background-color: rgba(6, 45, 31, 0.8);
+}
+
+.border-theme-color {
+    border: 1px solid var(--theme-color);
 }
 
 .btn-lg {
