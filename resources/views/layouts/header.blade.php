@@ -3,7 +3,6 @@
     <head>
         <!-- COMPULSORY META TAGS -->
         <meta charset="utf-8">
-        <meta name="_token" content="{{ csrf_token() }}" />
         <meta http-equiv='cache-control' content='no-cache'>
         <meta http-equiv='expires' content='0'>
         <meta http-equiv='pragma' content='no-cache'>

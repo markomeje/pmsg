@@ -11,40 +11,57 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-9">
-                    <?php $links = ['supporters' => ['text' => 'Our Supporters', 'icon' => 'web', 'count' => \App\Models\Supporter::count()], 'users' => ['text' => 'Admin Users', 'icon' => 'web', 'count' => \App\Models\User::count()], 'blogs' => ['text' => 'Blog Posts', 'icon' => 'web', 'count' => \App\Models\Post::count()], 'new' => ['text' => 'All News.', 'icon' => 'web', 'count' => \App\Models\News::count()]]; ?>
+                    <?php 
+                        $links = [
+                            'supporters' => ['text' => 'Our Supporters', 'icon' => 'web', 'count' => \App\Models\Supporter::count()], 
+                            'blogs' => ['text' => 'Blog Posts', 'icon' => 'web', 'count' => \App\Models\Post::count()], 
+                            'news' => ['text' => 'All News.', 'icon' => 'web', 'count' => \App\Models\News::count()]
+                        ]; 
+                    ?>
                     <div class="row">
                         @if(empty($links))
                             <div class="alert alert-danger w-100">Dashboard links not found.</div>
                         @else
                             @foreach($links as $link => $value)
                                 <div class="col-12 col-md-4 col-lg-4 mb-4">
-                                    <div class="card bg-white shadow-sm border-theme-color" style="border-raduis: 50px !important;">
+                                    <div class="card bg-white border-0 shadow">
                                         <div class="card-body d-flex justify-content-between align-items-center">
                                             <div class="">
                                                 <h3 class="m-0 text-theme-color">
                                                     {{ $value['count'] ?? 0 }}
                                                 </h3>
-                                                <a href="{{ '' }}" class="font-weight-bold mb-3">
-                                                    <small class="text-theme-color">
-                                                        {{ $value['text'] }}
-                                                    </small>
+                                                <a href="{{ route("admin.{$link}") }}" class="font-weight-bold text-theme-color mb-3">
+                                                    {{ ucfirst($link) }}
                                                 </a>
                                             </div>
-                                            <div class="bg-theme-color mb-3 rounded-circle text-center" style="width: 55px; height: 55px; line-height: 55px;">
-                                                <small class="text-white">
+                                            <div class="bg-theme-color mb-3 rounded-circle text-center" style="width: 45px; height: 45px; line-height: 45px;">
+                                                <small class="text-light-green">
                                                     <i class="icofont-{{ $value['icon'] }}"></i>
                                                 </small>
                                             </div>
+                                        </div>
+                                        <div class="card-footer bg-theme-color">
+                                            <a href="{{ route("admin.{$link}") }}" class="text-decoration-none text-light-green">
+                                                <i class="icofont-long-arrow-right"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @endif
                     </div>
+                    <?php $news = \App\Models\News::latest()->take(4)->get(); ?>
+                    @if($news->count() > 0)
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-3"></div>
+                        </div>
+                    @else
+                        <div class="alert alert-info w-100">No Recent News</div>
+                    @endif
                 </div>
                 <div class="col-12 col-lg-3">
                     <div class="bg-theme-color text-white p-3 mb-4">New Supporters</div>
-                    <div class="bg-white p-3 pt-4 border border-light">
+                    <div class="bg-theme-color p-3 pt-4 border border-light shadow-sm">
                         <?php $supporters =  \App\Models\Supporter::latest()->take(4)->get(); ?>
                         @if($supporters->count() <= 0)
                             <div class="alert alert-danger">No recent supporters</div>

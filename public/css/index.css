@@ -7,6 +7,10 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+.object-cover {
+    object-fit: cover;
+}
+
 .disable { 
     opacity: .1 !important;
     cursor: not-allowed !important;
