@@ -44,7 +44,5 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 });
 
 Route::middleware(['web', 'auth', 'admin'])->domain(env('ADMIN_URL'))->group(function() {
-    Route::get('/', function () {
-        return view('admin.dashboard.index');
-    })->name('admin');
+    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 });
