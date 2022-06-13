@@ -183,7 +183,7 @@ ul {
 }
 
 .form-control {
-    border: 1px solid var(--light-green) !important;
+    border: 1px solid var(--theme-color) !important;
 }
 
 .news-banner {
@@ -230,7 +230,7 @@ ul {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 110px !important;
+    padding-top: 120px !important;
 }
 
 .navbar-toggle {

@@ -25,7 +25,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::prefix('news')->group(function () {
         Route::get('/', [\App\Http\Controllers\NewsController::class, 'index'])->name('news');
-        Route::post('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'send'])->name('news.read');
+        Route::get('/{id}/{slug}', [\App\Http\Controllers\NewsController::class, 'read'])->name('news.read');
     });
 
     Route::group(['middleware' => 'guest'], function () {
@@ -35,37 +35,32 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 });
 
-Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
+Route::domain(env('ADMIN_URL'))->middleware(['web', 'auth'])->group(function() {
+    Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
 
-// Route::domain(env('ADMIN_URL'))->middleware(['web', 'auth'])->group(function() {
-//     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
+    Route::prefix('news')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news');
 
-//     Route::prefix('news')->group(function () {
-//         Route::get('/', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.news');
+        Route::match(['get', 'post'], '/add', [\App\Http\Controllers\Admin\NewsController::class, 'add'])->name('admin.news.add');
+        Route::post('/status/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'status'])->name('admin.news.status.update');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
 
-//         Route::match(['get', 'post'], '/add', [\App\Http\Controllers\Admin\NewsController::class, 'add'])->name('admin.news.add');
-//         Route::post('/status/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'status'])->name('admin.news.status.update');
-//         Route::post('/delete/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'delete'])->name('admin.news.delete');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
+    });
 
-//         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
-//         Route::get('/edit/{id}', [\App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('admin.news.edit');
-        
-//         Route::get('/{category?}', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.blogs');
-//     });
+    Route::prefix('supporters')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\SupportersController::class, 'index'])->name('admin.supporters');
+        Route::get('/profile/{id}', [\App\Http\Controllers\Admin\SupportersController::class, 'profile'])->name('admin.supporter.profile');
+    });
 
-//     Route::prefix('supporters')->group(function () {
-//         Route::get('/', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.supporters');
-//     });
+    Route::prefix('blogs')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.blogs');
+    });
 
-//     Route::prefix('blogs')->group(function () {
-//         Route::get('/', [\App\Http\Controllers\Admin\NewsController::class, 'index'])->name('admin.blogs');
-
-
-//     });
-
-//     Route::prefix('image')->group(function () {
-//         Route::post('/upload', [\App\Http\Controllers\Api\ImagesController::class, 'upload'])->name('admin.image.upload');
-//         Route::match(['delete', 'post'], '/delete', [\App\Http\Controllers\Api\ImagesController::class, 'delete'])->name('admin.image.delete');
-//     });
-// });
+    Route::prefix('image')->group(function () {
+        Route::post('/upload', [\App\Http\Controllers\Admin\ImagesController::class, 'upload'])->name('admin.image.upload');
+        Route::match(['delete', 'post'], '/delete', [\App\Http\Controllers\Admin\ImagesController::class, 'delete'])->name('admin.image.delete');
+    });
+});
 

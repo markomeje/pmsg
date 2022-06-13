@@ -49,6 +49,14 @@ class News extends Model
      */
     public function image()
     {
-        return $this->hasOne(Image::class, 'model_id')->where(['type' => 'blog']);
+        return $this->hasOne(Image::class, 'model_id')->where(['type' => 'news']);
+    }
+
+    /**
+     * A local scope for published posts
+     */
+    public function scopePublished($query)
+    {
+        return $query->where(['published' => true]);
     }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('title');
             $table->text('description');
             $table->bigInteger('reads')->nullable();
-            $table->boolean('published')->default(true);
+            $table->boolean('published')->default(false);
             $table->string('category')->nullable();
             $table->foreignId('user_id');
             $table->timestamps();

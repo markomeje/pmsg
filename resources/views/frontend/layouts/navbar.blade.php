@@ -1,4 +1,4 @@
-<div class="fixed-top bg-white">
+<div class="fixed-top bg-white" style="border-bottom: 20px solid var(--theme-color);">
     <div class="">
         <div class="container">
             <div class="navbar-items py-2 px-0 d-flex align-items-center justify-content-between">
@@ -14,48 +14,9 @@
                             <a href="{{ route('news') }}" class="text-decoration-none text-theme-color">News</a>
                         </li>
                         <li class="ml-3">
-                            <a href="{{ '' }}" class="text-decoration-none text-theme-color">Blog</a>
-                        </li>
-                        <li class="ml-3">
-                            <a href="{{ route('support') }}" class="text-decoration-none text-theme-color">Support</a>
+                            <a href="{{ route('support') }}" class="btn btn-md bg-light-green px-4 text-white">Support</a>
                         </li>
                     </ul>
-                    <div class="navbar-auth">
-                        @if(auth()->check())
-                            <div class="dropdown cursor-pointer ml-3">
-                                <div class="text-center rounded-circle" id="admin-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 4" style="width: 28px; height: 28px; line-height: 28px;">
-                                    <div class="rounded-circle bg-theme-color w-100 h-100">
-                                        <small class="text-white">
-                                            @if(empty(auth()->user()->name))
-                                                <i class="icofont-ui-user"></i>
-                                            @else
-                                                {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
-                                            @endif
-                                        </small> 
-                                    </div>
-                                </div>
-                                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="admin-user">
-                                    <a class="dropdown-item" href="{{ route('admin') }}">
-                                        <small class="text-theme-color mr-1">
-                                          <i class="icofont-login"></i>
-                                        </small>
-                                        <small class="text-theme-color">Admin</small>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
-                                        <small class="text-theme-color mr-1">
-                                          <i class="icofont-ui-play"></i>
-                                        </small>
-                                        <small class="text-theme-color">Logout</small>
-                                    </a>
-                                </div>
-                            </div>
-                        @else
-                            <div class="d-flex desktop-signlog align-items-center">
-                                <a href="{{ route('login') }}" class="btn btn-md bg-light-green px-4 ml-4 text-white">Login</a>
-                            </div>
-                        @endif
-                    </div>
                     <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
                         <div class="icon-lines"></div>
                     </div>
@@ -69,9 +30,7 @@
         <div class="px-3 py-4">
             <a href="{{ route('home') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Home</a>
             <a href="{{ route('news') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">News</a>
-            @if(!auth()->check())
-                <a href="{{ route('login') }}" class="d-block text-white text-decoration-none px-3 py-3 border bg-theme-color mb-3">Login</a>
-            @endif 
+            <a href="{{ route('support') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Support</a>
         </div> 
     </div>
 </div>

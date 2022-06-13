@@ -10,12 +10,14 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('admin.news.index')->with(['news' => News::paginate(20)]);
+        $category = request()->get('category');
+        $news = empty($category) ? News::paginate(20) : News::where(['category' => \Str::title(str_replace('-', ' ', $category))])->paginate(20);
+        return view('admin.news.index')->with(['news' => $news]);
     }
 
     public function add()
     {
-        if (request()->ajax() || request()->header('Accept') == 'application/json') {
+        if (request()->ajax() || request()->header('Accept') === 'application/json') {
             $data = request()->all();
             $validator = Validator::make($data, [
                 'title' => ['required', 'string'],
@@ -30,12 +32,20 @@ class NewsController extends Controller
                 ]);
             }
 
+            $status = isset($data['status']) ? (boolean)$data['status'] : false;
+            if ($status === true) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Publish status should be no until after uploading news image.'
+                ]);
+            }
+
             $news = News::create([
                 'title' => $data['title'],
                 'description' => $data['description'],
                 'category' => $data['category'],
-                'published' => (boolean)$data['status'],
-                'user_id' => auth()->user()->id
+                'published' => $status,
+                'user_id' => auth()->id()
             ]);
 
             if ($news) {
@@ -55,26 +65,47 @@ class NewsController extends Controller
         return view('admin.news.add')->with(['news' => News::paginate(20)]);
     }
 
-    public function status($id)
+    public function status($id = 0)
     {
-        $article = Blog::find($id);
-        $article->published = (boolean)$article->published ? false : true;
-        $article->update();
+        $news = News::find($id);
+        if (empty($news)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed'
+            ], 500);
+        }
+
+        $news->published = (boolean)$news->published === true ? false : true;
+        if ($news->update()) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation Successful',
+                'redirect' => ''
+            ]);
+        }
+
         return response()->json([
-            'status' => 1, 
-            'info' => 'Article status updated successfully'
-        ]);
+            'status' => 0, 
+            'info' => 'Operation failed'
+        ], 500);
     }
 
     public function edit($id = 0)
     {
         $news = News::find($id);
-        if (request()->ajax() || request()->header('Accept') == 'application/json') {
+        if (empty($news)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid Operation.'
+            ]);
+        }
+
+        if (request()->ajax() || request()->header('Accept') === 'application/json') {
             $data = request()->all();
             $validator = Validator::make($data, [
                 'title' => ['required', 'string'],
                 'description' => ['required', 'string'],
-                'category' => ['required', 'integer'],
+                'category' => ['required', 'string'],
             ]);
 
             if ($validator->fails()) {
@@ -84,20 +115,34 @@ class NewsController extends Controller
                 ]);
             }
 
+            $status = isset($data['status']) ? (boolean)$data['status'] : false;
+            if ($status === true && empty($news->image->url)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Publish status should be no until after uploading news image.'
+                ]);
+            }
+
             $news->title = $data['title'];
             $news->description = $data['description'];
-            $news->category_id = $data['category'];
-            $news->published = (boolean)$data['status'];
-            $news->update();
+            $news->category = $data['category'];
+            $news->published = $status;
+
+            if ($news->update()) {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Operation Successful',
+                    'redirect' => ''
+                ]);
+                
+            }
 
             return response()->json([
-                'status' => 1, 
-                'info' => 'Operation Successful',
-                'redirect' => ''
-            ]);
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ], 500);
         }
 
         return view('admin.news.edit')->with(['news' => $news]);
-
     }
 }

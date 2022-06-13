@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\{Blog, User, Category};
+use App\Models\News;
 use Faker\Factory as Faker;
 
-class BlogFactory extends Factory
+class NewsFactory extends Factory
 {
 
     /**
@@ -16,16 +16,13 @@ class BlogFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
-        $faker->addProvider(new \Smknstd\FakerPicsumImages\FakerPicsumImagesProvider($faker));
         return [
             'title' => $faker->sentence(),
-            'user_id' => rand(1, User::count()),
-            'views' => $faker->numberBetween(103, 765),
+            'user_id' => rand(1, 40),
+            'reads' => $faker->numberBetween(103, 765),
             'published' => $faker->boolean(40), //40% chance of get true
-            'image' => $faker->imageUrl($width = 1260, $height = 960),
-            'category_id' => rand(1, Category::count()),
+            'category' => $faker->randomElement(News::CATEGORIES),
             'description' => $faker->paragraph(25),
-            'reference' => \Str::uuid(32),
         ];
     }
 }

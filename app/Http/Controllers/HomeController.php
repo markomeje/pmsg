@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Support;
+use App\Models\{Support, News};
 
 class HomeController extends Controller
 {
+    /**
+     */
     public function index()
     {
-        return view('frontend.home.index')->with([]);
+        return view('frontend.home.index')->with(['news' => News::published()->latest('created_at')->take(6)->get()]);
     }
 
     /**

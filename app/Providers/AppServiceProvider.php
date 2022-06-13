@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (app()->environment(['production'])) {
+            $this->app['request']->server->set('HTTPS','on');
+            URL::forceScheme('https');
+        }
+
+        Paginator::useBootstrap();
         Schema::defaultStringLength(191);
     }
 }

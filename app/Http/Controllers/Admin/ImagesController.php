@@ -1,27 +1,19 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\{Category, Blog, Country};
+use App\Models\Image;
 use App\Http\Controllers\Controller;
 use Validator;
 
-class BlogsController extends Controller
+class ImagesController extends Controller
 {
-    /**
-     * Admin Properties list view
-     */
-    public function index($limit = 12)
-    {
-        return view('admin.blogs.index')->with(['blogs' => Blog::paginate(8), 'categories' => Category::where(['type' => 'blog'])->get()]);
-    }
-
     /**
      * Upload blog image
      */
-    public function image($id = 0)
+    public function upload($id = 0)
     {
-        $image = request()->file('image');
-        $validator = Validator::make(['image' => $image], [
+        $file = request()->file('image');
+        $validator = Validator::make(['image' => $file], [
             'image' => ['required', 'image', 'mimes:jpg,png,jpeg,gif,svg|max:10240']
         ]);
 
@@ -32,14 +24,43 @@ class BlogsController extends Controller
             ]);
         }
 
-        $extension = $image->getClientOriginalExtension();
-        $filename = \Str::uuid().'.'.$extension;
-        $path = 'images/blogs';
-        $image->move($path, $filename);
+        $data = request()->all();
+        $model_id = $data['model_id'] ?? 0;
+        $type = $data['type'] ?? '';
 
-        $blog = Blog::find($id);
-        if (!empty($blog->image)) {
-            $prevfile = explode('/', $blog->image);
+        $extension = $file->getClientOriginalExtension();
+        $filename = \Str::uuid().'.'.$extension;
+        $path = 'images/news';
+        $file->move($path, $filename);
+        $url = config('app.url')."/{$path}/{$filename}";
+
+        $image = Image::where(['model_id' => $model_id])->first();
+        if (empty($image)) {
+            $image = Image::create([
+                'url' => $url,
+                'model_id' => $model_id,
+                'filename' => $filename,
+                'format' => $extension,
+                'type' => $type,
+                'user_id' => auth()->id(),
+            ]);
+
+            if ($image) {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Operation successful'
+                ]);
+            }
+
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation failed'
+            ], 500);
+            
+        }
+
+        if (!empty($image->url)) {
+            $prevfile = explode('/', $image->url);
             $previmage = end($prevfile);
             $file = "{$path}/{$previmage}";
             if (file_exists($file)) {
@@ -47,90 +68,28 @@ class BlogsController extends Controller
             }
         }
             
-        $blog->image = env('APP_URL')."/images/blogs/{$filename}";
-        $blog->update();
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Blog image updated successfully'
-        ]);
+        $image->url = $url;
+        $image->format = $extension;
+        $image->filename = $filename;
+        $image->type = $type;
 
-    }
-
-    public function status($id)
-    {
-        $article = Blog::find($id);
-        $article->published = (boolean)$article->published ? false : true;
-        $article->update();
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Article status updated successfully'
-        ]);
-    }
-
-    public function store()
-    {
-        $data = request()->all();
-        $validator = Validator::make($data, [
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'category' => ['required', 'integer'],
-        ]);
-
-        if ($validator->fails()) {
+        if ($image->update()) {
             return response()->json([
-                'status' => 0, 
-                'error' => $validator->errors()
+                'status' => 1, 
+                'info' => 'Operation successful'
             ]);
         }
 
-        Blog::create([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'category_id' => $data['category'],
-            'published' => (boolean)$data['status'],
-            'user_id' => 67
-        ]);
-
         return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => ''
-        ]);
+            'status' => 0, 
+            'info' => 'Operation faled'
+        ], 500);
 
     }
 
-    public function edit($id = 0)
+    public function delete($id)
     {
-        $data = request()->all();
-        $validator = Validator::make($data, [
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'category' => ['required', 'integer'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0, 
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $blog = Blog::find($id);
-        $blog->title = $data['title'];
-        $blog->description = $data['description'];
-        $blog->category_id = $data['category'];
-        $blog->published = (boolean)$data['status'];
-        $blog->reference = \Str::random(32);
-        $blog->image = 'https://picsum.photos/1260/960?random='.rand(10434, 90920);
-        $blog->update();
-
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Operation Successful',
-            'redirect' => ''
-        ]);
-
+        
     }
-
 
 }

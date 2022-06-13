@@ -6,7 +6,9 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="alert alert-info d-flex mb-4 align-items-center justify-content-between mb-4">
-                        <div>{{ \App\Models\News::count() }} News</div>
+                        <div class="text-theme-color">
+                            +{{ \App\Models\News::count() }} News
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">

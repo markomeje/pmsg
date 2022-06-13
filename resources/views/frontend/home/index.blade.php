@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <section class="" style="padding: 10rem 0;">
+        <section class="" style="padding: 10rem 0 8rem;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-lg-6 mb-4">
@@ -41,6 +41,22 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="bg-light" style="padding: 10rem 0 8rem;">
+            <div class="container">
+                <h1 class="text-theme-color mb-4">Recent News</h1>
+                @if(empty($news->count()))
+                    <div class="alert alert-info m-0">No available news</div>
+                @else
+                    <div class="row" style="margin-top: 4rem;">
+                        @foreach($news as $info)
+                            <div class="col-12 col-md-6 col-lg-4" style="margin-bottom: 5rem;">
+                                @include('frontend.news.partials.card')
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </section>
         @include('frontend.layouts.bottom')

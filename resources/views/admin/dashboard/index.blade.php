@@ -50,14 +50,25 @@
                             @endforeach
                         @endif
                     </div>
-                    <?php $news = \App\Models\News::latest()->take(4)->get(); ?>
-                    @if($news->count() > 0)
-                        <div class="row">
-                            <div class="col-12 col-md-4 col-lg-3"></div>
+                    <div class="">
+                        <div class="alert alert-info mb-4 d-flex align-content-center justify-content-between">
+                            <div>Recent News</div>
+                            <a href="{{ route('admin.news') }}" class="">View all</a>
                         </div>
-                    @else
-                        <div class="alert alert-info w-100">No Recent News</div>
-                    @endif
+                        <?php $news = \App\Models\News::latest('created_at')->take(6)->get(); ?>
+                        @if($news->count() > 0)
+                            <div class="row">
+                                @foreach($news as $info)
+                                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                        @include('admin.news.partials.card')
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="alert alert-info w-100">No Recent News</div>
+                        @endif
+                    </div>
+                        
                 </div>
                 <div class="col-12 col-lg-3">
                     <div class="bg-theme-color text-white p-3 mb-4">New Supporters</div>

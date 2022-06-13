@@ -11,51 +11,60 @@
                     <div class="row">
                         <div class="col-12 col-lg-9 mb-4">
                             <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
-                                <a href="{{ route('admin.news') }}" class="text-decoration-none">
-                                    All News
+                                <a href="{{ route('admin.news') }}" class="text-decoration-none text-theme-color">
+                                    <i class="icofont-long-arrow-left"></i> All News
                                 </a>
-                                <a href="{{ route('admin.news.add') }}" class="text-decoration-none">
+                                <a href="{{ route('admin.news.add') }}" class="text-decoration-none text-theme-color">
                                     <i class="icofont-plus"></i>
                                 </a>
                             </div>
-                            <div class="position-relative">
-                                <div class="d-flex position-absolute upload-image" data-id="{{ $news->id }}" style="bottom: 35px; right: 50px; z-index: 2;">
-                                    <div class="cursor-pointer text-white bg-main-dark md-circle text-center rounded-circle">
-                                        <small class="position-relative" style="top: 2px;">
+                            <div class="position-relative mb-4">
+                                <div class="position-absolute bg-theme-color rounded-circle upload-image" data-id="{{ $news->id }}" style="z-index: 2; top: 80px; right: 50px;">
+                                    <div class="bg-{{ empty($news->image) ? 'danger' : 'theme-color' }} border rounded-circle text-center" style="width: 35px; height: 35px; line-height: 32.5px;">
+                                        <small class="position-relative text-white">
                                             <i class="icofont-camera"></i>
                                         </small>
                                     </div>
                                 </div>
-                                <div class="image-loader bg-main-dark lg-circle text-center d-none position-absolute rounded-circle border" data-id="{{ $news->id }}" style="top: 40%; left: 50%; z-index: 2;">
-                                    <div class="position-relative" style="top: 5px;">
+                                <div class="image-loader bg-main-dark text-center d-none position-absolute rounded-circle border" data-id="{{ $news->id }}" style="top: 40%; left: 50%; z-index: 2; width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.75);">
+                                    <div class="position-relative" style="top: 10px;">
                                         <img src="/images/spinner.svg">
                                     </div>
                                 </div>
-                                <div class="card mb-4">
-                                    <div class="card-body p-4">
+                                <div class="card border-theme-color m-0">
+                                    <div class="card-header">
+                                        <div class="text-theme-color">Update news image</div>
+                                    </div>
+                                    <div class="card-body p-0 m-0">
                                         @if(empty($news->image))
-                                            <form action="javascript:;">
-                                                <input type="file" name="image" accept="image/*" class="image-input" data-url="{{ route('admin.image.upload', ['model_id' => $news->id, 'type' => 'news', 'public_id' => '']) }}" style="display: none;">
-                                            </form>
-                                            <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}" style="height: 280px;" class="d-block mb-4">
-                                                <img src="/images/banner.jpg" class="img-fluid image-preview h-100 w-100 object-cover border">
-                                            </a>
+                                            <div class="position-relative">
+                                                <form action="javascript:;">
+                                                    @csrf
+                                                    <input type="file" name="image" accept="image/*" class="image-input" data-url="{{ route('admin.image.upload', ['model_id' => $news->id, 'type' => 'news']) }}" style="display: none;">
+                                                </form>
+                                                <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}" style="height: 280px;" class="d-block mb-4">
+                                                    <img src="/images/holder.png" class="img-fluid image-preview h-100 w-100 object-cover">
+                                                </a>
+                                            </div>  
                                         @else
-                                            <?php $image = $news->image; ?>
-                                            <form action="javascript:;">
-                                                <input type="file" name="image" accept="image/*" class="image-input" data-url="{{ route('admin.image.upload', ['model_id' => $image->model_id, 'type' => $image->type, 'public_id' => $image->public_id]) }}" style="display: none;">
-                                            </form>
-                                            <a href="{{ $news->image->url }}" style="height: 280px;" class="d-block mb-4">
-                                                <img src="{{ $news->image->url }}" class="img-fluid image-preview h-100 w-100 object-cover border">
-                                            </a>
+                                            <div class="position-relative">
+                                                <?php $image = $news->image; ?>
+                                                <form action="javascript:;">
+                                                    @csrf
+                                                    <input type="file" name="image" accept="image/*" class="image-input" data-url="{{ route('admin.image.upload', ['model_id' => $image->model_id, 'type' => $image->type]) }}" style="display: none;">
+                                                </form>
+                                                <a href="{{ $image->url }}" style="height: 280px;" class="d-block mb-4">
+                                                    <img src="{{ $image->url }}" class="img-fluid image-preview h-100 w-100 object-cover">
+                                                </a>
+                                            </div>
                                         @endif
                                     </div>
-                                </div>
-                                        
+                                </div>     
                             </div>
                             <div class="alert alert-info mb-4">Edit News.</div>
                             <div class="bg-white p-4 card-raduis shadow-sm">
-                                <form method="post" action="javascript:;" class="edit-new-form" data-action="{{ route('admin.news.edit', ['id' => $news->id]) }}" autocomplete="off">
+                                <form method="post" action="javascript:;" class="edit-news-form" data-action="{{ route('admin.news.edit', ['id' => $news->id]) }}" autocomplete="off">
+                                    @csrf
                                     <div class="form-row">
                                         <div class="form-group col-12">
                                             <label class="form-label text-muted">Title</label>
@@ -89,7 +98,7 @@
                                                     <option value="">No Status</option>
                                                 @else
                                                     @foreach ($status as $key => $value)
-                                                        <option value="{{ (boolean)$value }}" {{ $news->status == (boolean)$value ? 'selected' : '' }}>
+                                                        <option value="{{ (boolean)$value }}" {{ (boolean)$news->published === (boolean)$value ? 'selected' : '' }}>
                                                             {{ ucfirst($key) }}
                                                         </option>
                                                     @endforeach
@@ -100,12 +109,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="text-muted">Description</label>
-                                        <textarea class="form-control description new-description-{{ $news->id }}" name="description" rows="4" placeholder="Add book description." id="description">{{ $news->description ?? '' }}</textarea>
+                                        <textarea class="form-control description" name="description" rows="4" placeholder="" id="description">{{ $news->description ?? '' }}</textarea>
                                         <small class="invalid-feedback description-error"></small>
                                     </div>
-                                    <div class="alert mb-3 edit-new-message d-none"></div>
-                                    <button type="submit" class="btn bg-theme-color text-white edit-new-button mt-1 px-5 py-3">
-                                        <img src="/images/spinner.svg" class="mr-2 d-none edit-new-spinner mb-1">
+                                    <div class="alert mb-3 edit-news-message d-none"></div>
+                                    <button type="submit" class="btn bg-theme-color text-white edit-news-button mt-1 px-5 py-3">
+                                        <img src="/images/spinner.svg" class="mr-2 d-none edit-news-spinner mb-1">
                                         Save
                                     </button>
                                 </form>
@@ -115,18 +124,16 @@
                             <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">Recent news</div>
                             <div class="rows">
                                 <?php $news = \App\Models\News::latest('created_at')->take(3)->get(); ?>
-                                @if(empty($news->count()))
-                                    <div class="alert alert-danger mb-4">No Recent news</div>
-                                @else
+                                @if($news->count() > 0)
                                     <div class="row">
                                         @foreach($news as $info)
-                                            @if($info->id !== $id)
-                                                <div class="col-12 col-md-4 col-lg-12 mb-4">
-                                                    @include('admin.news.partials.card')
-                                                </div>
-                                            @endif
+                                            <div class="col-12 col-md-4 col-lg-12 mb-4">
+                                                @include('admin.news.partials.card')
+                                            </div>
                                         @endforeach
-                                    </div> 
+                                    </div>
+                                @else
+                                    <div class="alert alert-danger mb-4">No Recent news</div>
                                 @endif
                             </div>
                         </div>
