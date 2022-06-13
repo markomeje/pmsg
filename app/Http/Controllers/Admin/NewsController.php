@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function index()
     {
         $category = request()->get('category');
-        $news = empty($category) ? News::paginate(20) : News::where(['category' => \Str::title(str_replace('-', ' ', $category))])->paginate(20);
+        $news = empty($category) ? News::latest('created_at')->paginate(20) : News::latest('created_at')->where(['category' => \Str::title(str_replace('-', ' ', $category))])->paginate(20);
         return view('admin.news.index')->with(['news' => $news]);
     }
 
@@ -134,7 +134,6 @@ class NewsController extends Controller
                     'info' => 'Operation Successful',
                     'redirect' => ''
                 ]);
-                
             }
 
             return response()->json([
@@ -144,5 +143,42 @@ class NewsController extends Controller
         }
 
         return view('admin.news.edit')->with(['news' => $news]);
+    }
+
+    public function delete($id = 0)
+    {
+        $news = News::find($id);
+        if (empty($news)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid Operation.'
+            ], 500);
+        }
+
+        if ($news->image()->exists()) {
+            if (!empty($news->image->url)) {
+                $prevfile = explode('/', $news->image->url);
+                $previmage = end($prevfile);
+                $file = "images/news/{$previmage}";
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+
+                $news->image()->delete();
+            }
+        }
+
+        if ($news->delete()) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful.',
+                'redirect' => ''
+            ]);
+        }
+
+        return response()->json([
+            'status' => 0, 
+            'info' => 'Operation failed'
+        ]);
     }
 }

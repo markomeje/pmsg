@@ -25,7 +25,7 @@
                 @else
                     <div class="row">
                         @foreach($supporters as $supporter)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <div class="col-12 col-md-6 col-lg-3 mb-4">
                                 @include('admin.supporters.partials.card')
                             </div>
                         @endforeach

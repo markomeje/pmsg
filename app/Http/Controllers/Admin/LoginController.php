@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
@@ -18,7 +19,7 @@ class LoginController extends Controller
      */
     public function login()
     {
-        return view('frontend.auth.login')->with(['title' => 'Login']);
+        return view('admin.auth.login')->with(['title' => 'Login']);
     }
 
     public function logout()

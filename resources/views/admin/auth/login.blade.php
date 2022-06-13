@@ -8,7 +8,7 @@
                     </a>
                     <h3 class="text-theme-color mb-4">Login to continue.</h3>
                     <div class="text-white mb-4"></div>
-                    <div class="mb-4 p-4 rounded" style="border: 1px solid var(--light-green);">
+                    <div class="mb-4 p-4 rounded" style="border: 1px solid var(--theme-color);">
                         <form action="javascript:;" method="post" class="login-form" data-action="{{ route('auth.login') }}">
                             @csrf
                             <div class="form-row">
@@ -27,14 +27,7 @@
                                     <small class="error password-error text-danger"></small>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-3">
-                                <div class="">
-                                    <a href="{{ '' }}">
-                                        <small class="">Forgot Password?</small>
-                                    </a>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-lg bg-theme-color icon-raduis btn-block text-white login-button mb-4">
+                            <button type="submit" class="btn btn-lg bg-light-green icon-raduis btn-block text-white login-button mb-4 mt-2">
                                 <img src="/images/spinner.svg" class="mr-2 d-none login-spinner mb-1">
                                 Login
                             </button>

@@ -8,6 +8,8 @@
         <script src="{{ config('app.url') }}/js/index.js"></script>
         {{-- forms JS --}}
         <script src="{{ config('app.url') }}/js/forms.js"></script>
+        {{-- ajax JS --}}
+        <script src="{{ config('app.url') }}/js/ajax.js"></script>
         <!-- Summernote -->
         <script src="{{ config('app.url') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
         {{-- Other Scripts --}}

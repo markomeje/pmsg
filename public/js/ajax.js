@@ -2,8 +2,8 @@
 
 	'use strict';
 
-    $('.delete-staff').on('click', function() {
-        handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
+    $('.delete-news').on('click', function() {
+        handleAjax({that: $(this), button: 'delete-news-button', spinner: 'delete-news-spinner'});    
     });
 
 })(jQuery);

@@ -6,11 +6,21 @@
             </div>
         </div> 
         <div class="">
-            <a href="{{ route('admin.supporter.profile', ['id' => $supporter->id]) }}">
-                <small class="text-main-dark d-block">
+            <div class="dropdown">
+                <a href="javascript:;" class="text-theme-color position-relative text-underline" id="status-{{ $supporter->id }}" data-toggle="dropdown">
                     {{ \Str::limit(ucwords($supporter->title.' '.$supporter->firstname.' '.$supporter->lastname), 12) }}
-                </small>
-            </a> 
+                </a>
+                <div class="dropdown-menu border-0 shadow" style="width: 240px;" aria-labelledby="status-{{ $supporter->id }}">
+                    <div class="p-3 w-100">
+                        <div class="bg-light p-3 mb-3">
+                            {{ ucwords($supporter->title.' '.$supporter->firstname.' '.$supporter->lastname) }}
+                        </div>
+                        <div class="bg-light p-3 mb-3">
+                            {{ ucwords($supporter->lga) }}
+                        </div>
+                    </div>  
+                </div>
+            </div>
             <small class="text-muted">
                 {{ ucwords($supporter->created_at->diffForHumans()) }}
             </small>

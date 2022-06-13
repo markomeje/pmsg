@@ -17,10 +17,9 @@ class UserSeeder extends Seeder
     {
         $faker = Faker::create();
         $users = [
-            ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active', 'name' => $faker->name()],
+            ['phone' => $faker->phoneNumber(), 'email' => 'admin@pmsg.ng', 'role' => 'admin', 'password' => Hash::make('!pMs-g@360.'), 'status' => 'active', 'name' => 'Administrator'],
         ];
-
-        User::truncate();
+        
         foreach ($users as $user) {
             User::create($user);
         }
