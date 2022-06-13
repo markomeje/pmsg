@@ -23,6 +23,8 @@ class NewsController extends Controller
             return view('frontend.news.read')->with(['info' => '']);
         }
 
+        $info->reads  = $info->reads + 1; 
+        $info->update();
         $title = ucwords($info->title.' | '.config('app.name'));
         return view('frontend.news.read')->with(['title' => $title, 'info' => $info]);
     }

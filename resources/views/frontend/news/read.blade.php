@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-8 mb-4">
                             <h4 class="mb-4 text-theme-color">
-                                {{ ucfirst($info->title) }}
+                                {{ ucfirst($info->title) }} ({{ $info->reads }})
                             </h4>
                             <div class="mb-4 shadow-sm rounded" style="">
                                 <img src="{{ empty($info->image->url) ? '/images/news.jpg' : $info->image->url }}" class="w-100 img-fluid h-100 rounded border-theme-color">

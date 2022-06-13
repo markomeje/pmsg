@@ -71,41 +71,17 @@
                         
                 </div>
                 <div class="col-12 col-lg-3">
-                    <div class="bg-theme-color text-white p-3 mb-4">New Supporters</div>
-                    <div class="bg-theme-color p-3 pt-4 border border-light shadow-sm">
+                    <div class="bg-theme-color text-white p-4 mb-4">New Supporters</div>
+                    <div class="">
                         <?php $supporters =  \App\Models\Supporter::latest()->take(4)->get(); ?>
                         @if($supporters->count() <= 0)
                             <div class="alert alert-danger">No recent supporters</div>
                         @else
                         <div class="row">
                             @foreach($supporters as $supporter)
-                                <div class="col-12 col-md-4 col-lg-12">
-                                    <div class="p-3 bg-white mb-4 shadow-sm border-theme-color d-flex align-items-center justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-2">
-                                                <div class="text-center text-main-dark border rounded-circle" style="height: 35px; width: 35px; line-height: 35px; background-color: {{ randomrgba() }};">
-                                                    {{ substr($supporter->firstname, 0, 1) }}
-                                                </div>
-                                            </div> 
-                                            <div class="">
-                                                <a href="{{ '' }}">
-                                                    <small class="text-main-dark d-block">
-                                                        {{ \Str::limit($supporter->firstname, 12) }}
-                                                    </small>
-                                                </a> 
-                                                <small class="text-muted tiny-font">
-                                                    {{ ucwords($supporter->created_at->diffForHumans()) }}
-                                                </small>
-                                            </div>
-                                        </div> 
-                                        <div class="rounded-circle bg-success text-center" style="height: 20px; width: 20px; line-height: 20px;">
-                                            <small class="text-white">
-                                                <i class="icofont-tick-mark"></i>
-                                            </small>
-                                        </div>
-                                    </div>
+                                <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                    @include('admin.supporters.partials.card')
                                 </div>
-                                
                             @endforeach
                         </div>
                             
