@@ -71,7 +71,7 @@
                     <i class="icofont-edit"></i>
                 </a>
             </small>
-            <small class="text-danger cursor-pointer delete-news" data-url="{{ route('admin.news.delete', ['id' => $info->id]) }}" data-message="Are you sure to delete post?">
+            <small class="text-danger cursor-pointer delete-news" data-url="{{ route('admin.news.delete', ['id' => $info->id]) }}" data-message="Are you sure to delete news?">
                 <i class="icofont-trash"></i>
             </small>
         </div>

@@ -12,6 +12,6 @@ class SupportersController extends Controller
      */
     public function index()
     {
-        return view('admin.supporters.index')->with(['supporters' => Supporter::paginate(20)]);
+        return view('admin.supporters.index')->with(['supporters' => Supporter::latest('created_at')->paginate(20)]);
     }
 }

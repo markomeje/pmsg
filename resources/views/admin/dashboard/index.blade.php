@@ -73,7 +73,7 @@
                 <div class="col-12 col-lg-3">
                     <div class="bg-theme-color text-white p-4 mb-4">New Supporters</div>
                     <div class="">
-                        <?php $supporters =  \App\Models\Supporter::latest()->take(4)->get(); ?>
+                        <?php $supporters =  \App\Models\Supporter::latest('created_at')->take(4)->get(); ?>
                         @if($supporters->count() <= 0)
                             <div class="alert alert-danger">No recent supporters</div>
                         @else
