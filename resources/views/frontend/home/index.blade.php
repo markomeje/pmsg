@@ -30,7 +30,7 @@
                                     Barr. Peter Mbah
                                 </div>
                             </div>
-                            <img src="/images/pnm.png" class="img-fluid w-100 h-100" style="border: 1px solid var(--light-green)">
+                            <img src="/images/pmsg.webp" class="img-fluid w-100 h-100" style="border: 1px solid var(--light-green)">
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 mb-4">
