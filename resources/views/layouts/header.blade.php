@@ -40,7 +40,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
         <link rel="manifest" href="/favicon/site.webmanifest">
         <!-- SITE TITLE -->
-        <title>{{ config('app.name') }}</title>
+        <title>{{ $title ?? config('app.name') }}</title>
         {{-- Google fonts --}}
         @if(app()->environment(['production']))
             <link rel="preconnect" href="https://fonts.googleapis.com">
