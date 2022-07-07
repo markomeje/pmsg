@@ -91,6 +91,20 @@ body {
     border: 1px solid var(--theme-color);
 }
 
+.copy-confirmation {
+    background-color: rgba(0, 0, 0, 0.84);
+    position: absolute;
+    top: 30%;
+    right: 40%;
+    z-index: 100;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px 12px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
 .btn-lg {
     border-top-left-radius: 24px !important;
     border-bottom-right-radius: 24px !important;

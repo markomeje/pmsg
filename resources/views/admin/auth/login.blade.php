@@ -8,7 +8,7 @@
                     </a>
                     <h3 class="text-theme-color mb-4">Login to continue.</h3>
                     <div class="text-white mb-4"></div>
-                    <div class="mb-4 p-4 rounded" style="border: 1px solid var(--theme-color);">
+                    <div class="mb-4 p-4 rounded shadow">
                         <form action="javascript:;" method="post" class="login-form" data-action="{{ route('auth.login') }}">
                             @csrf
                             <div class="form-row">

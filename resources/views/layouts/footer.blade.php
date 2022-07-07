@@ -10,10 +10,22 @@
         <script src="{{ config('app.url') }}/js/forms.js"></script>
         {{-- ajax JS --}}
         <script src="{{ config('app.url') }}/js/ajax.js"></script>
+        {{-- Copy to clipboard --}}
+        <script src="{{ config('app.url') }}/js/clipboard.js"></script>
         <!-- Summernote -->
         <script src="{{ config('app.url') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
         {{-- Other Scripts --}}
         <script type="text/javascript">
+            $(function(){
+                $('.copy-to-clipboard').copyOnClick({
+                    // confirmShow: true
+                    confirmClass:"copy-confirmation",
+                    confirmText:"Copied",
+                    confirmTime: 3,
+                });
+            });
+            // new ClipboardJS('.copy-to-clipboard');
+
             var description = $('#description');
             if (description) {
                 description.summernote({
