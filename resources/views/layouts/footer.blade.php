@@ -14,6 +14,10 @@
         <script src="{{ config('app.url') }}/js/clipboard.js"></script>
         <!-- Summernote -->
         <script src="{{ config('app.url') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
+        {{-- Chat Bot --}}
+        @if(!str_contains(request()->root(), 'admin') && str_contains(request()->root(), '.ng'))
+            <script src="//code.tidio.co/mxllsfj2n4cmmufikdimeqa4ujtvoojd.js" async></script>
+        @endif
         {{-- Other Scripts --}}
         <script type="text/javascript">
             $(function(){
