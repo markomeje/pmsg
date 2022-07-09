@@ -13,6 +13,7 @@
 				<a href="{{ route('home') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Home</a>
 				<a href="{{ route('news') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">News</a>
 				<a href="{{ route('support') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Support</a>
+				<a href="javascript:;" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Gallery</a>
 			</div>
 			<div class="col-12 col-md-6 col-lg-4 mb-4">
 				<h3 class="text-light-green mb-4">Social Connect</h3>
@@ -30,6 +31,9 @@
 						</a>
 					</div>
 				</div>
+				<a href="mailto:{{ env('OFFICIAL_EMAIL') }}" class="d-block text-decoration-none text-theme-color">
+					{{ env('OFFICIAL_EMAIL') }}
+				</a>
 			</div>
 		</div>
 	</div>
