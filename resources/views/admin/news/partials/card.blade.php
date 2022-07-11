@@ -1,12 +1,12 @@
-<div class="card shadow-sm border-theme-color">
-    <div class="card-img p-4 position-relative">
+<div class="card shadow">
+    <div class="card-img p-0 position-relative">
         @if(empty($info->image))
             <a href="{{ route('admin.news.edit', ['id' => $info->id]) }}" style="height: 140px;" class="d-block">
-                <img src="/images/holder.png" class="img-fluid h-100 w-100 object-cover rounded shadow-sm border-theme-color">
+                <img src="/images/holder.png" class="img-fluid h-100 w-100 object-cover border">
             </a>
         @else
             <a href="{{ route('admin.news.edit', ['id' => $info->id]) }}" style="height: 140px;" class="d-block">
-                <img src="{{ $info->image->url }}" class="img-fluid h-100 w-100 object-cover rounded shadow-sm border-theme-color">
+                <img src="{{ $info->image->url }}" class="img-fluid h-100 w-100 object-cover border">
             </a>
         @endif
     </div>

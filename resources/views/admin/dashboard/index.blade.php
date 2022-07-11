@@ -14,7 +14,7 @@
                     <?php 
                         $links = [
                             'supporters' => ['text' => 'Our Supporters', 'icon' => 'web', 'count' => \App\Models\Supporter::count()], 
-                            'blogs' => ['text' => 'Blog Posts', 'icon' => 'web', 'count' => \App\Models\Post::count()], 
+                            'gallery' => ['text' => 'Our Gallery', 'icon' => 'web', 'count' => \App\Models\Image::where(['type' => 'gallery'])->get()->count()], 
                             'news' => ['text' => 'All News.', 'icon' => 'web', 'count' => \App\Models\News::count()]
                         ]; 
                     ?>

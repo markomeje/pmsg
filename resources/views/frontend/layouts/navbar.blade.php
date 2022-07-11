@@ -14,6 +14,9 @@
                             <a href="{{ route('news') }}" class="text-decoration-none text-theme-color">News</a>
                         </li>
                         <li class="ml-3">
+                            <a href="{{ route('gallery') }}" class="text-decoration-none text-theme-color">Gallery</a>
+                        </li>
+                        <li class="ml-3">
                             <a href="{{ route('support') }}" class="btn btn-md bg-light-green px-4 text-white">Support</a>
                         </li>
                     </ul>

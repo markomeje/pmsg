@@ -21,6 +21,7 @@ class News extends Model
         'status',
         'description',
         'user_id',
+        'created_at',
     ];
 
     /**

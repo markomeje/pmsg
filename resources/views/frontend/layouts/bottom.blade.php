@@ -13,11 +13,11 @@
 				<a href="{{ route('home') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Home</a>
 				<a href="{{ route('news') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">News</a>
 				<a href="{{ route('support') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Support</a>
-				<a href="javascript:;" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Gallery</a>
+				<a href="{{ route('gallery') }}" class="d-block text-decoration-none text-theme-color pb-3 mb-3" style="border-bottom: 1px solid var(--light-green)">Gallery</a>
 			</div>
 			<div class="col-12 col-md-6 col-lg-4 mb-4">
 				<h3 class="text-light-green mb-4">Social Connect</h3>
-				<div class="">
+				<div class="mb-4">
 					<div class="text-theme-color mb-4">To stay informed, connect with us via our social handles</div>
 					<div class="d-flex align-items-center justify-content-around p-4 bg-light-green">
 						<a href="https://www.facebook.com/petermbahsupport/" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
@@ -29,11 +29,11 @@
 						<a href="https://twitter.com/PMSG2023/status/1532366562686128135?s=20&t=tDSFDuXB7EO2oXbpYJRy9g" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
 							<i class="icofont-twitter"></i>
 						</a>
+						<a href="mailto:{{ env('OFFICIAL_EMAIL') }}" class="bg-white text-center rounded-circle text-theme-color mr-3" style="width: 40px; height: 40px; line-height: 40px;" target="_blank">
+							<i class="icofont-email"></i>
+						</a>
 					</div>
 				</div>
-				<a href="mailto:{{ env('OFFICIAL_EMAIL') }}" class="d-block text-decoration-none text-theme-color">
-					{{ env('OFFICIAL_EMAIL') }}
-				</a>
 			</div>
 		</div>
 	</div>

@@ -66,13 +66,11 @@
                                 <form method="post" action="javascript:;" class="edit-news-form" data-action="{{ route('admin.news.edit', ['id' => $news->id]) }}" autocomplete="off">
                                     @csrf
                                     <div class="form-row">
-                                        <div class="form-group col-12">
+                                        <div class="form-group col-6">
                                             <label class="form-label text-muted">Title</label>
                                             <input type="text" name="title" class="form-control title" placeholder="e.g., How to buy a home" value="{{ $news->title ?? '' }}">
                                             <small class="invalid-feedback title-error"></small>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label text-muted">Category</label>
                                             <select class="custom-select form-control category" name="category">
@@ -89,6 +87,13 @@
                                                 @endempty
                                             </select>
                                             <small class="invalid-feedback category-error"></small>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="form-label text-muted">Publish Date</label>
+                                            <input type="date" name="date" class="form-control date" value="{{ date('Y-m-d', strtotime($news->created_at)) ?? '' }}">
+                                            <small class="invalid-feedback date-error"></small>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label text-muted">Publish Now?</label>

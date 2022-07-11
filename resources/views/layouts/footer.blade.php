@@ -38,10 +38,18 @@
                 });
             }
 
-            @if(!empty($posts) || !empty($news))
+            @if(!empty($posts) || !empty($news) || !empty($images))
                 $('.upload-image').click(function() {
                     uploader({target: $(this), button: 'upload-image', input: 'image-input', loader: 'image-loader', preview: 'image-preview'});
                 });   
+            @endif
+
+            @if(!empty($images))
+                @foreach($images as $image)
+                    $('.upload-image-{{ $image->id }}').click(function() {
+                        uploader({target: $(this), button: 'upload-image-{{ $image->id }}', input: 'image-input-{{ $image->id }}', loader: 'image-loader-{{ $image->id }}', preview: 'image-preview-{{ $image->id }}'});
+                    });
+                @endforeach 
             @endif
         </script>
     </body>

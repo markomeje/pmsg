@@ -15,7 +15,6 @@
             <div class="position-relative" style="top: 4px;">
                 <img src="/images/spinner.svg">
             </div>
-            
         </div>
         @if(empty($blog->image))
             <form action="javascript:;">

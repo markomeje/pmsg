@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Gallery;
+use App\Models\Image;
 
 class GalleryController extends Controller
 {
@@ -9,7 +9,7 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('frontend.gallery.index')->with(['images' => News::published()->latest('created_at')->take(6)->get()]);
+        return view('frontend.gallery.index')->with(['gallery' => Image::latest('created_at')->where(['type' => 'gallery'])->paginate(20)]);
     }
 
 }

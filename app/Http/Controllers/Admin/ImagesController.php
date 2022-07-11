@@ -10,7 +10,7 @@ class ImagesController extends Controller
     /**
      * Upload blog image
      */
-    public function upload($id = 0)
+    public function upload()
     {
         $file = request()->file('image');
         $validator = Validator::make(['image' => $file], [
@@ -30,11 +30,11 @@ class ImagesController extends Controller
 
         $extension = $file->getClientOriginalExtension();
         $filename = \Str::uuid().'.'.$extension;
-        $path = 'images/news';
+        $path = 'images/gallery';
         $file->move($path, $filename);
         $url = config('app.url')."/{$path}/{$filename}";
 
-        $image = Image::where(['model_id' => $model_id])->first();
+        $image = $type === 'gallery' ? Image::find(request()->get('id')) : Image::where(['model_id' => $model_id])->first();
         if (empty($image)) {
             $image = Image::create([
                 'url' => $url,

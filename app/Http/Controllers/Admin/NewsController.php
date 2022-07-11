@@ -23,6 +23,7 @@ class NewsController extends Controller
                 'title' => ['required', 'string'],
                 'description' => ['required', 'string'],
                 'category' => ['required', 'string'],
+                'date' => ['nullable', 'date'],
             ]);
 
             if ($validator->fails()) {
@@ -36,7 +37,7 @@ class NewsController extends Controller
             if ($status === true) {
                 return response()->json([
                     'status' => 0, 
-                    'info' => 'Publish status should be no until after uploading news image.'
+                    'info' => 'Upload image first before publishing. Select no'
                 ]);
             }
 
@@ -45,7 +46,8 @@ class NewsController extends Controller
                 'description' => $data['description'],
                 'category' => $data['category'],
                 'published' => $status,
-                'user_id' => auth()->id()
+                'user_id' => auth()->id(),
+                'created_at' => $data['date'],
             ]);
 
             if ($news) {
@@ -106,6 +108,7 @@ class NewsController extends Controller
                 'title' => ['required', 'string'],
                 'description' => ['required', 'string'],
                 'category' => ['required', 'string'],
+                'date' => ['nullable', 'date'],
             ]);
 
             if ($validator->fails()) {
@@ -119,7 +122,7 @@ class NewsController extends Controller
             if ($status === true && empty($news->image->url)) {
                 return response()->json([
                     'status' => 0, 
-                    'info' => 'Publish status should be no until after uploading news image.'
+                    'info' => 'Upload image first before publishing. Select no'
                 ]);
             }
 
@@ -127,6 +130,7 @@ class NewsController extends Controller
             $news->description = $data['description'];
             $news->category = $data['category'];
             $news->published = $status;
+            $news->created_at = $data['date'] ?? date('Y-m-d');
 
             if ($news->update()) {
                 return response()->json([
