@@ -1,10 +1,22 @@
 <div class="rounded position-relative">
-	<div class="position-absolute bg-theme-color rounded-circle upload-image-{{ $gallery->id }}" data-id="{{ $gallery->id }}" style="z-index: 2; bottom: 20px; right: 20px;">
-        <div class="bg-success border rounded-circle text-center cursor-pointer" style="width: 35px; height: 35px; line-height: 32.5px;">
-            <small class="position-relative text-white">
-                <i class="icofont-camera"></i>
-            </small>
-        </div>
+    <div class="position-absolute w-100 p-4" style="z-index: 2;">
+        <div class="row">
+            <div class="col-6">
+                <a class="btn btn-info text-center cursor-pointer upload-image-{{ $gallery->id }}" data-id="{{ $gallery->id }}">
+                    <small class="text-white">
+                        <i class="icofont-camera"></i>
+                    </small>
+                </a>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-danger text-white text-center w-100 d-flex align-items-center justify-content-center text-center cursor-pointer delete-image-button-{{ $gallery->id }} delete-image-{{ $gallery->id }}" data-url="{{ route('admin.image.delete', ['id' => $gallery->id, 'type' => 'gallery']) }}">
+                    <img src="/images/spinner.svg" class="mr-2 d-none delete-image-spinner-{{ $gallery->id }}">
+                    <small class="text-white">
+                        <i class="icofont-trash"></i>
+                    </small>
+                </a>
+            </div>
+        </div>    
     </div>
     <div class="image-loader-{{ $gallery->id }} bg-main-dark text-center d-none position-absolute rounded-circle border" data-id="{{ $gallery->id }}" style="top: 40%; left: 50%; z-index: 2; width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.75);">
         <div class="position-relative" style="top: 10px;">

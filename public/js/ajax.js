@@ -6,4 +6,6 @@
         handleAjax({that: $(this), button: 'delete-news-button', spinner: 'delete-news-spinner'});    
     });
 
+    
+
 })(jQuery);

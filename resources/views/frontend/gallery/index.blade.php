@@ -16,6 +16,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{ $gallery->links('vendor.pagination.default') }}
                 @endif
             </div>
         </section>
