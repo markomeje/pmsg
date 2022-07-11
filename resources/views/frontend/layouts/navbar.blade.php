@@ -34,6 +34,7 @@
             <a href="{{ route('home') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Home</a>
             <a href="{{ route('news') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">News</a>
             <a href="{{ route('support') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Support</a>
+            <a href="{{ route('gallery') }}" class="d-block text-white text-decoration-none text-theme-color px-3 py-3 border bg-theme-color mb-3">Gallery</a>
         </div> 
     </div>
 </div>

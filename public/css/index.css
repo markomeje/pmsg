@@ -244,7 +244,7 @@ ul {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 120px !important;
+    padding-top: 130px !important;
 }
 
 .navbar-toggle {
