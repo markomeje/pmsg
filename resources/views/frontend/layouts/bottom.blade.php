@@ -2,15 +2,21 @@
 	<div class="container">
 		<?php $images = \App\Models\Image::where(['type' => 'gallery'])->inRandomOrder()->take(4)->get(); ?>
 		@if(!empty($images))
-			<div class="row mb-5">
-				@foreach($images as $image)
-					<div class="col-12 col-md-4 col-lg-3 mb-4">
-						<a href="{{ $image->url }}" class="d-block" style="height: 280px;">
-                            <img src="{{ $image->url }}" class="img-fluid shadow w-100 h-100 object-cover rounded">
-                        </a>
-					</div>
-				@endforeach
+			<div class="mb-5">
+				<div class="row">
+					@foreach($images as $image)
+						<div class="col-12 col-md-4 col-lg-3 mb-4">
+							<a href="{{ $image->url }}" class="d-block" style="height: 280px;">
+	                            <img src="{{ $image->url }}" class="img-fluid shadow w-100 h-100 object-cover rounded">
+	                        </a>
+						</div>
+					@endforeach
+				</div>
+				<h4 class="m-0 text-theme-color">
+					To see more, <a href="{{ route('gallery') }}">visit our gallery.</a>
+				</h4>
 			</div>
+				
 		@endif
 		<div class="row">
 			<div class="col-12 col-lg-4 mb-4">
