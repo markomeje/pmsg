@@ -21,7 +21,7 @@
             </div>
             <div class="">
                 <div class="mb-4">
-                    <?php $max = 10; ?>
+                    <?php $max = 12; ?>
                     <div class="alert alert-warning mb-0">
                         <i class="icofont-info-circle"></i>
                         <span>You can only upload maximum of ({{ $max }}) image(s) at a time.</span>

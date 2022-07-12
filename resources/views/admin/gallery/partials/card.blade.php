@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="col-6">
-                <a class="btn btn-danger text-white text-center w-100 d-flex align-items-center justify-content-center text-center cursor-pointer delete-image-button-{{ $gallery->id }} delete-image-{{ $gallery->id }}" data-url="{{ route('admin.image.delete', ['id' => $gallery->id, 'type' => 'gallery']) }}">
+                <a class="btn btn-danger text-white text-center w-100 d-flex align-items-center justify-content-center text-center cursor-pointer delete-image-button-{{ $gallery->id }} delete-image-{{ $gallery->id }}" data-url="{{ route('admin.image.delete', ['id' => $gallery->id, 'type' => 'gallery']) }}" data-message="Are you sure to delete image?">
                     <img src="/images/spinner.svg" class="mr-2 d-none delete-image-spinner-{{ $gallery->id }}">
                     <small class="text-white">
                         <i class="icofont-trash"></i>

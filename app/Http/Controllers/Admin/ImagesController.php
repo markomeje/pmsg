@@ -185,10 +185,10 @@ class ImagesController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $filename = \Str::uuid().'.'.$extension;
                 $path = 'images/gallery';
-                $url = config('app.url')."/{$path}/{$filename}";
+                $filePath = "/{$path}/{$filename}";
 
                 $image = Image::create([
-                    'url' => $url,
+                    'url' => config('app.url').$filePath,
                     'model_id' => $data['model_id'] ?? 0,
                     'filename' => $filename,
                     'format' => $extension,

@@ -66,11 +66,12 @@ Route::middleware(['web'])->group(function() {
                 Route::get('/', [\App\Http\Controllers\Admin\GalleryController::class, 'index'])->name('admin.gallery');
             });
 
-            Route::prefix('image')->group(function () {
+            Route::middleware(['optimizeImages'])->prefix('image')->group(function () {
                 Route::post('/upload', [\App\Http\Controllers\Admin\ImagesController::class, 'upload'])->name('admin.image.upload');
                 Route::post('/multiple', [\App\Http\Controllers\Admin\ImagesController::class, 'multiple'])->name('admin.multiple.images.upload');
-                Route::match(['delete', 'post'], '/delete', [\App\Http\Controllers\Admin\ImagesController::class, 'delete'])->name('admin.image.delete');
             });
+            
+            Route::match(['delete', 'post'], '/image/delete', [\App\Http\Controllers\Admin\ImagesController::class, 'delete'])->name('admin.image.delete');
         });
 
         Route::get('/logout', [\App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('logout');
